@@ -17,25 +17,6 @@ const App = () => {
   const [title, setTitle] = useState("");
   const [inputTitle, setInputTitle] = useState("");
 
-  const getAnswer = async () => {
-    try {
-      const response = await fetch("http://www.tuling123.com/openapi/api", {
-        method: "post",
-        body: JSON.stringify({
-          key: "d0542def0cb94cc48e4bdd836b25281c",
-          info: inputTitle,
-        }),
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
-      const data = await response.json();
-      setTitle(data.text);
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
   return (
     <SafeAreaView>
       <View
@@ -68,17 +49,8 @@ const App = () => {
               style={{
                 backgroundColor: "transparent",
               }}
-              source={{ uri: "http://127.0.0.1:5500/live2d/index.html" }}
+              source={{ uri: "https://live2d.fly.dev/" }}
             />
-          </View>
-          <View>
-            <View style={styles.flexRow}>
-              <TextInput
-                style={styles.input}
-                onChangeText={(text) => setInputTitle(text)}
-              />
-              <Button onPress={getAnswer} title="发送" />
-            </View>
           </View>
         </ImageBackground>
       </View>
